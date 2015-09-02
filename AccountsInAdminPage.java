@@ -8,6 +8,10 @@ public class AccountsInAdminPage extends page {
 public PriorArtPageInIntelligence hoverNclickOnInteligenceMenu(){
 		
 		hoverNclickOnSubNavLink(HeaderElem.LNK_INTELLIGENCE,HeaderElem.TXT_INTELLIGENCE_PRIORART_TITLE);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1 .subheader")));
+		String resultsKeyword = FindByCssSelector("h1 span.subheader").getText();
+		String keyword_trim = resultsKeyword.substring(1, resultsKeyword.length()-1);
+		return keyword_trim;
 		
 	}
 
