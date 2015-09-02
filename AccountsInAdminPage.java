@@ -8,7 +8,7 @@ public class AccountsInAdminPage extends page {
 public PriorArtPageInIntelligence hoverNclickOnInteligenceMenu(){
 		
 		hoverNclickOnSubNavLink(HeaderElem.LNK_INTELLIGENCE,HeaderElem.TXT_INTELLIGENCE_PRIORART_TITLE);
-		return new PriorArtPageInIntelligence();
+		
 	}
 
 private void hoverNclickOnSubNavLink(String lnkIntelligence,
