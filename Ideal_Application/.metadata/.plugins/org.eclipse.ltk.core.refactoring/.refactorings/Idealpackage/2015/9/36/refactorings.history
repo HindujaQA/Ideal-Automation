@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.rpxcorp.cp.selenium.basePage&apos; to &apos;Portal_Details/src&apos;&#x0D;&#x0A;- Original project: &apos;Idealpackage&apos;&#x0D;&#x0A;- Destination element: &apos;Portal_Details/src&apos;&#x0D;&#x0A;- Original element: &apos;Idealpackage/src/com.rpxcorp.cp.selenium.basePage&apos;" description="Copy package" destination="=Portal_Details/src" element1="/src&lt;com.rpxcorp.cp.selenium.basePage" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1441100580239" version="1.0"/>
+</session>

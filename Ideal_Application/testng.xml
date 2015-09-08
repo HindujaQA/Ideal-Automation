@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Client Portal - Details Test Suite" >
+	
+	<listeners>
+		<listener class-name="com.rpxcorp.cp.selenium.util.TestScriptListener"/>	
+	</listeners>
+	
+  <test name="SetUp Scripts" >
+  	<classes>  
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.initializeStop"/>
+   	</classes>  
+  </test> <!-- Test -->
+  	
+   <test name="Test Header Area" >
+   	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestHeaderArea">
+        	<methods>
+      			<include name="CheckRPXLogoLink"/>
+      			<include name="CheckDashBoardLink"/>
+      			<include name="CheckMyPortalLink"/>
+      			<include name="CheckIntelligenceLink"/>
+      			<include name="CheckPortfolioLink"/>
+      			<include name="CheckAdvancedSearchLink"/>
+      			<include name="CheckMarketplaceLink"/>
+      			<include name="CheckNPEProfilesLink"/>
+      			<include name="CheckNewsLink"/>
+      			<include name="CheckRPXReportsLink"/>      
+      			<include name="CheckMyProfileLink"/>
+      			<include name="CheckMyAlertsLink"/>
+      			<include name="CheckMyAssertionsLink"/>
+      			<include name="CheckMyReportsLink"/>
+      			<include name="CheckClientListLink"/>
+      			<exclude name="CheckRPXPatentsLink"/>
+      			<exclude name="CheckRPXPortfolioLink"/>      			
+      		</methods>
+    	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestHeaderArea -->       
+  	</classes> 
+  </test> <!-- Test Header Area -->
+  
+  
+  <test name="Test News Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestNews">
+        	<methods>
+      			<include name="checkNewsListDetails"/>
+      			<include name="checkKeywordSearchResultsForSpecificDates"/>  
+      			<include name="checkKeywordSearchResultsNoDateSelection"/>  
+      			<include name="checkFilterResultsWithFacetItemEachFacetDefaultDates"/>
+      			<include name="checkFilterResultsWithDatesAndFacetItemEachFacet"/>      		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestNews -->       
+   	</classes> 
+  </test> <!-- Test News Page -->
+   
+	
+  <test name="Test NPE Profiles Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestNpeProfilesPage">
+        	<methods>
+      			<include name="checkNpeTableDetails"/>
+      			<include name="checkShowDropdownEntriesInNpeTable"/>
+      			<include name="checkSearchResultsInNPETable"/>      		   		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestNpeProfilesPage -->       
+   	</classes> 
+  </test> <!-- Test NPE Profiles Page -->
+  
+  
+  
+  <test name="Test My Reports Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestMyReports">
+        	<methods>
+      			<include name="checkRpxQuarterlyReports"/>      		        		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestMyReports -->       
+   	</classes> 
+  </test> <!-- Test My Reports Page -->
+  
+  
+  <test name="Test RPX Reports Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestRpxReports">
+        	<methods>
+      			<include name="checkSummaryReportsSection"/>
+      			<include name="checkRpxMonthlyCaseLawReportsLinks"/>      		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestRpxReports -->       
+   	</classes> 
+  </test> <!-- Test RPX Reports Page -->
+
+  <test name="Test My Alerts Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestMyAlerts">
+        	<methods>
+      			<include name="checkMyAlertsPgContent"/>
+      			<include name="checkCreateAlerts"/> 
+      			<include name="checkUpdateAndDeleteAlerts"/>     		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestMyAlerts -->       
+   	</classes> 
+  </test> <!-- Test My Alerts Page" -->
+  
+  <test name="Test My Assertions Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestMyAssertions">
+        	<methods>
+      			<include name="Add_Assertions"/>
+      			<include name="View_and_Edit_Assertion"/>
+      			<include name="checkTblContentOfMyAssertions"/> 
+      			<include name="checkMyAssertionNewsSection"/>     		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestMyAssertions -->       
+   	</classes> 
+  </test> <!-- Test My Assertions Page -->
+  
+  <test name="Test Advanced Search Forms" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestAdvancedSearch">
+        	<methods>
+      			<include name="checkAllPartiesSearch"/>
+      			<include name="checkPlaintiffSearch"/>
+      			<include name="checkDefendantSearch"/>   
+      			<include name="checkCaseDetailsSearch"/>   
+      			<include name="checkPatentInfoSearch"/>   
+      			<include name="checkAssignee"/>      
+      			<include name="checkDates"/> 
+      			<include name="checkEntitySearchNoMarketSector"/>
+      			<include name="checkPlaintiffAndDefendantSearch"/> 
+      			<include name="checkGrantedPatentsearchInPortfolio"/>
+      			<include name="checkIsLitigatedAndClaimsChartInPortfolioSearch"/>
+      			<include name="CheckFacetSearchModalTitle"/>
+      			<include name="checkMultiSelectInTechnologyAreaMarketPlace"/>	
+      			<include name="checkPatInfoAdvMktSearchPage"/>	
+      			<include name="checkAdvSearchMarketPlace"/>	    		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestAdvancedSearch -->       
+   	</classes> 
+  </test> <!-- Test Advanced Search Forms -->  
+  
+    <test name="Test Clients List Page" >
+  	<classes>
+    	<class name="com.rpxcorp.cp.selenium.pages.tests.TestClientList">
+        	<methods>
+      			<include name="checkRPXClientList"/>      			      		 		
+      		</methods>
+      	</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestClientList -->       
+   	</classes> 
+  </test> <!-- Test Clients List Page -->
+
+
+	<test name="Test Dashboard Page" >
+		<classes>
+			<class name="com.rpxcorp.cp.selenium.pages.tests.TestDashBoardPage">
+				<methods>		
+			    	<include name="checkLatestPatentNewsPanel"/>
+			      	<include name="checkNPECaseCounterPanel"/>
+			      	<include name="checkDashboardProfile"/>
+			      	<include name="checkTopNPEsToWatchPanel"/>
+			      	<include name="checkMyAssertionsPanel"/>
+			    </methods>
+			</class> <!--com.rpxcorp.cp.selenium.pages.tests.TestDashBoardPage -->       
+		</classes> 
+	</test> <!-- Test Dashboard Page -->
+  
+  
+  
+  
+  
+
+</suite> <!-- Suite -->

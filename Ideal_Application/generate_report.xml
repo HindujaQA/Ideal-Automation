@@ -1,0 +1,36 @@
+<project name="Portal_Tests" basedir=".">
+    <property name="LIB" value="${basedir}/lib" />
+    <property name="BIN" value="${basedir}/bin" />
+    <property name="OUTPUT" value="${basedir}/test-output" />
+	
+    <path id="master-classpath">
+            <pathelement location="${BIN}" />
+            <fileset dir="${LIB}">
+                <include name="**/*.jar" />
+            </fileset>
+        </path>
+	
+ 
+	
+	<property name="testng.output.dir" value="test-output"/>
+	<property name="ws.jars" value="${basedir}/lib"/>
+	<path id = "test.class">
+		<fileset dir = "${ws.jars}" includes="*.jar" /> 
+	</path>
+	
+	<target name="makexsltreports">
+		<mkdir dir="${basedir}/XSLT_Reports"/>
+		<xslt in = "${basedir}/test-output/testng-results.xml"
+			  style="${basedir}/src/xslt/testng-results.xsl"
+			  out = "${basedir}/XSLT_Reports/index.html"
+			  classpathref="test.class" 
+			  processor="SaxonLiaison">
+			<param name="testNgXslt.showRuntimeTotals" expression="true"/>
+			<param name="testNgXslt.outputDir" expression="${basedir}/XSLT_Reports"/>
+		</xslt>
+		
+	</target>
+	
+	
+	 
+</project>

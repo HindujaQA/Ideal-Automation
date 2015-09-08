@@ -1,0 +1,164 @@
+<project name="Client_Portal_Tests" basedir=".">
+	<echo> Initializing properties </echo> 
+	<!-- Initialize Properties  -->
+	<property name="ws.lib" value="${basedir}/lib" />
+	<property name="selenium.lib" value="${ws.lib}/libSelenium"/>
+	<property name="other.lib" value="${ws.lib}/libOther"/>
+    <property name="test.dest" value="${basedir}/build" />
+	<property name="test.src" value="${basedir}/src" />
+    <property name="OUTPUT" value="${basedir}/test-output" />
+	<property name="BIN" value="${basedir}/bin" />
+	
+	
+	<!-- set classpath -->
+	<path id="selenium.lib.path">
+		<pathelement location="${selenium.lib}" /> 
+		<fileset dir="${selenium.lib}" includes = "*.jar"/>		
+	</path>
+	
+	<path id="other.lib.path">
+		<pathelement location="${other.lib}" /> 
+		<fileset dir="${other.lib}" includes = "*.jar"/>		
+	</path>
+		
+	<path id="master-classpath">
+		<path refid="selenium.lib.path"/>
+		<path refid="other.lib.path"/>		
+	</path>	
+	
+	<target name="setClasspath">
+		<path id="build-classpath">
+			<pathelement location="${test.dest}"/>
+			<path refid="master-classpath"/>			
+		</path>	
+	</target>
+		
+	<!-- init -->	
+	<target name="init">
+		<echo> Initializing.....</echo>
+		<tstamp>
+			<format property="start.time" pattern="MM/dd/yyyy hh:mm aa"  />
+		</tstamp>
+		<!-- Define <testng> task -->
+
+		<taskdef name="testng" classname="org.testng.TestNGAntTask">
+			<classpath>
+				<pathelement path="${selenium.lib}"/>
+				<fileset dir="${selenium.lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+				<!--<pathelement location="${selenium.lib}/testng-6.8.jar"/> --> 			
+			</classpath>
+		</taskdef>
+		
+	</target>
+	
+	<!-- clean -->
+	<target name="clean">
+		<echo> Cleaning.....</echo>
+		<delete dir="${test.dest}"/>
+		<delete dir="${basedir}/XSLT_Reports"/>
+	</target>
+	
+	<!-- complie -->
+	<target name="compile" depends="init,clean">
+		<echo> Cleaning empty directories.....</echo> 
+		<delete includeemptydirs="true" quiet="true">
+			<fileset dir="${test.dest}" includes="**/*"/>
+		</delete>
+		<mkdir dir="${test.dest}"/>
+		<echo> Compiling.....</echo> 
+		<javac
+			debug="true"
+			destdir="${test.dest}"
+			srcdir="${test.src}"
+			target="1.7"
+			classpathref="master-classpath" 
+		/> <!-- end of Javac-->
+		
+		<copy todir="${test.dest}">
+			<fileset dir="${test.src}" excludes="**/*.java"/>
+		</copy>
+		
+	</target>
+	
+	<!-- run -->
+	<target name="run" depends="compile,setClasspath">
+		<echo> Executing tests.....</echo> 
+		<testng classpathref="build-classpath" >
+			<xmlfileset dir="${basedir}" includes="testng_tests.xml"/>
+		</testng> 
+		
+		<!--<testng classpathref="build-classpath" suitename="Client Portal - Details Test Suite">
+			 <xmlfileset dir="${basedir}" includes="testng.xml"/> 			
+		</testng> --> 
+				
+	</target>
+	
+	<target name="makexsltreports">
+		<echo> Making xslt reports.....</echo>
+		<mkdir dir="${basedir}/XSLT_Reports"/>
+		<xslt in = "${basedir}/test-output/testng-results.xml"
+			  style="${basedir}/src/xslt/testng-results.xsl"
+			  out = "${basedir}/XSLT_Reports/index.html"
+			  classpathref="other.lib.path" 
+			  processor="SaxonLiaison">
+			<param name="testNgXslt.showRuntimeTotals" expression="true"/>
+			<param name="testNgXslt.outputDir" expression="${basedir}/XSLT_Reports"/>
+		</xslt>
+		
+	</target>
+	
+	<target name="zip">
+		
+		<tstamp prefix="zip">
+			<format property="ZIPRESULTS" pattern="MMddyyyy_hh_mm_aa"/>		
+		</tstamp>
+		<zip destfile="${test.dest}/xslt_reports_${zip.DSTAMP}_${zip.TSTAMP}.zip" basedir="${basedir}/XSLT_Reports" duplicate="preserve"/>
+	</target>
+	
+
+	
+	<!-- email -->
+	<target name="eMail">
+		<mail 
+			enableStartTLS="true"
+			mailhost="smtpx3.intermedia.net"
+			mailport="587"
+			user="username@rpxcorp.com"
+			password="password"	
+			encoding="mime"
+			messagemimetype="text/html"
+			messagefile="XSLT_Reports\overview.html"				
+			subject=" ${start.TESTRESULTS} : Automation Results" >
+			<from address="username@rpxcorp.com"/>
+			<replyto address="username@rpxcorp.com"/>
+			<to address="username@rpxcorp.com"/>
+			<attachments>
+				<fileset dir="${basedir}">					
+					<!--<include name="**/*.zip"/> -->
+					<include name="xslt*.zip"/>					
+				</fileset>
+			</attachments>
+					
+		</mail>
+	</target>
+	
+	<!-- <target name="usage" >
+		<echo>
+			ant run will execute the tests.
+			ant all will mail the zip of xslt reports generated after executing tests in testng.xml file.
+			ant makexsltreports will generate xslt reports, caution:At least one test needs to be executed before generating reports.
+			ant zip will zip the xslt reports generated.
+			ant eMail will email the zip file of xslt reports.
+		</echo>				
+	</target> -->
+	
+	<target name="all" depends="run,makexsltreports,zip,eMail">
+		<echo> Executing all targets </echo>				
+	</target>
+	
+	
+	
+	 
+</project>
