@@ -23,29 +23,32 @@ public class HomePage extends page{
 	
 	public DashBoardPage  Login(){
 		
-		 FindByName(ElemProp.ID_USER_NAME).clear();
-		 FindByName(ElemProp.ID_USER_NAME).sendKeys(CONFG.getProperty("USER_EMAIL"));
-		 FindByName(ElemProp.ID_USER_PASS_CODE).clear();
-		 FindByName(ElemProp.ID_USER_PASS_CODE).sendKeys(CONFG.getProperty("USER_PASS_CODE"));
-		 FindById(ElemProp.CL_LOGIN_BUTTON_VALUE).click();
+		FindById(ElemProp.UserName).clear();
+		 FindById(ElemProp.UserName).sendKeys(CONFG.getProperty("USER_EMAIL"));
+		 FindById(ElemProp.Password).clear();
+		 FindById(ElemProp.Password).sendKeys(CONFG.getProperty("USER_PASS_CODE"));
+
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
+		 		 
+		 FindById(ElemProp.LoginBtn).click();
 		 page.wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".sessions-page")));
 		 return new DashBoardPage();
 		
 	 }
 
-	public void clearLoginCredentials() {
+	
+	public void LoginInvalidCredentials() {
 		
-		FindById(ElemProp.ID_USER_NAME).clear();
-		FindById(ElemProp.ID_USER_PASS_CODE).clear();
+		FindById(ElemProp.UserName).clear();
+		 FindById(ElemProp.UserName).sendKeys(CONFG.getProperty("INV_USER_EMAIL"));
+		 FindById(ElemProp.Password).clear();
+		 FindById(ElemProp.Password).sendKeys(CONFG.getProperty("INV_USER_PASS_CODE"));
 
-	}
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
+		 		 
+		 FindById(ElemProp.LoginBtn).click();
+		 page.wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".sessions-page")));
 
-	public void LoginInvalidCredentials(String user_EMAIL,String user_INVALID_PWD) {
-		
-		FindById(ElemProp.ID_USER_NAME).sendKeys(user_EMAIL);
-		FindById(ElemProp.ID_USER_PASS_CODE).clear();
-		FindById(ElemProp.ID_USER_PASS_CODE).sendKeys(user_INVALID_PWD);
-		FindByCssSelector(ElemProp.CL_LOGIN_BUTTON_VALUE).click();
 	}
 	
 	
