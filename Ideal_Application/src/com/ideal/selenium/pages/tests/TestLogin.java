@@ -11,7 +11,7 @@ public class TestLogin {
 	public void checkLogin(){
 		HomePage home= new HomePage();
 		home.Login();
-
+		home.FindByClassName("test").click();
 
 	}
 }
