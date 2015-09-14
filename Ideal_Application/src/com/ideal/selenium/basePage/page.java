@@ -75,12 +75,8 @@ public class page {
 
 			Reporter.log("Browser: "+CONFG.getProperty("BROWSER").trim().toUpperCase());
 
-			if(CONFG.getProperty("URL_HOMEPAGE").replaceAll("(https://)(.*)(.rpxcorp.com.*)", "$2").trim().toUpperCase().equals("PORTAL")){
-				Reporter.log("Environment: PRODUCTION");
-			}else{
-				//Reporter.log("Environment: "+CONFG.getProperty("URL_HOMEPAGE").replaceAll("(https://)(.*)(.rpxcorp.com.*)", "$2").trim().toUpperCase());
-				//.replaceAll("(https*://)(\\w+-*\\w+)(.*)", "$2")
-				Reporter.log("Environment: "+CONFG.getProperty("URL_HOMEPAGE").replaceAll("(https*://)(\\w+-*\\w+)(.*)", "$2").trim().toUpperCase());
+			if(CONFG.getProperty("URL_HOMEPAGE").trim().toUpperCase().contains("IDEAL")){
+				Reporter.log("Environment:Testing Environment");
 			}
 			//Reporter.log("URL		 :"+CONFG.getProperty("URL_HOMEPAGE"));
 			if (CONFG.getProperty("BROWSER").trim().toUpperCase().equals("FIREFOX"))
@@ -1318,6 +1314,32 @@ public class page {
 		}
 		
 		
+	public void MovetoElement(String Menu ,String Submenu ){
+		try{
+			WebElement element = FindByLink( Menu);
+			Actions action = new Actions(driver);
+			
+			page.wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(Menu)));
+			
+	        action.moveToElement(element).perform();
+
+	        page.wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText(Submenu)));
+	        
+	        WebElement subMenu = FindByLink(Submenu);
+	        
+			
+	        action.moveToElement(subMenu).click().perform();
+	        
+	       
+
+	       // action.perform();
+		}catch (Exception e){
+			//report error
+			e.printStackTrace();
+			
+		}
+
+	}
 	  
 
 }
