@@ -18,7 +18,7 @@ import com.ideal.selenium.po.DashBoardPage;
 import com.ideal.selenium.po.HomePage;
 import com.ideal.selenium.po.elements.ElemProp;
 
-public class Resource_Request_Form extends page{
+public classTestResource_Request_Form extends page{
 	private HomePage home = null;
 	private DashBoardPage dbPage = null;
 	
@@ -34,12 +34,12 @@ public class Resource_Request_Form extends page{
 				
 				System.out.println("In 500 error loop");
 					
-				Assert.assertTrue(home.FindByClassName("home_title_about").getText().trim().toUpperCase().contains(ElemProp.IdealTitle), "Not in Ideal Home Page");				
+				Assert.assertTrue(home.FindByClassName(ElemProp.MY_PROFILE_HEADING).getText().trim().toUpperCase().contains(ElemProp.IdealTitle), "Not in Ideal Home Page");				
 			
 			}else{
 				System.out.println("In 500 error else loop");
 				
-				Assert.assertTrue(home.FindByClassName("home_title").getText().trim().toUpperCase().contains(ElemProp.IdealTitle.trim().toUpperCase()) , "Not in Ideal Home Page");				
+				Assert.assertTrue(home.FindByClassName(ElemProp.MY_PROFILE_HEADING).getText().trim().toUpperCase().contains(ElemProp.IdealTitle), "Not in Ideal Home Page");				
 			}
 				}
 		return dbPage;
@@ -50,7 +50,7 @@ public class Resource_Request_Form extends page{
 	public void CreateRRF(){
 		DashBoardPage dbPage = new DashBoardPage();
 		System.out.println("In RRF Creation");
-		page.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#main_container > div.center_content > div:nth-child(5) > div.home_title_icon_profile > div")));
+		page.wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(ElemProp.MY_PROFILE_HEADING)));
 		dbPage.MovetoElement("MSS","Requestor");
 			
 		
