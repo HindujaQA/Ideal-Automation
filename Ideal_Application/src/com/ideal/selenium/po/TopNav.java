@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.junit.internal.runners.statements.Fail;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
+import com.ideal.selenium.po.elements.ElemProp;
 
 import com.ideal.selenium.basePage.page;
 import com.ideal.selenium.po.EmployeeExitPageUser;
@@ -32,7 +33,18 @@ public class TopNav {
 		page.driver.navigate().to(currentUrl);		
 		return new EmployeeExitPageUser();
 	}
+	public ResourceRequestFormPage goToRRFByUrl(){
 
+		String currentUrl = page.driver.getCurrentUrl();
+		if(currentUrl.trim().toUpperCase().contains("IDEAL"))
+			currentUrl = currentUrl.replaceAll("(http://)(.*)(iDeal)(.*)", "$1$2$3")+HeaderElem.SEO_RRF;
+		else
+		currentUrl = currentUrl.replaceAll("(https*://)(\\w+-*\\w+)(.*)", "$1$2")+HeaderElem.SEO_RRF;
+		page.driver.navigate().to(currentUrl);
+		return new ResourceRequestFormPage();
+
+
+	}
 
 
 }

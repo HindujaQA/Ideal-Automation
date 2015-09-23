@@ -51,7 +51,25 @@ public class HomePage extends page{
 
 	}
 	
-	
+	public DashBoardPage  Login(String Sheet,int Row, String UserColName, String PasswordColName){
+		//ReadExcel Excel =new ReadExcel;
+		
+		FindById(ElemProp.UserName).clear();
+		 //FindById(ElemProp.UserName).sendKeys(CONFG.getProperty("USER_EMAIL"));
+		FindById(ElemProp.UserName).sendKeys(page.testExcel.getStringCellData(Sheet,Row,UserColName));
+		 
+		 FindById(ElemProp.Password).clear();
+		 FindById(ElemProp.Password).sendKeys(page.testExcel.getStringCellData(Sheet, Row,PasswordColName));
+		// FindById(ElemProp.Password).sendKeys(CONFG.getProperty("USER_PASS_CODE"));
+
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);	
+		 		 
+		 FindById(ElemProp.LoginBtn).click();
+		 page.wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".sessions-page")));
+		 return new DashBoardPage();
+		
+	 }
+
 	
 
 

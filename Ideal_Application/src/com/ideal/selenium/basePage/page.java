@@ -40,7 +40,8 @@ import testlink.api.java.client.TestLinkAPIClient;
 import testlink.api.java.client.TestLinkAPIException;
 
 
-import com.ideal.selenium.util.ReadExcel;
+import com.ideal.selenium.util.ReadExcel
+import com.ideal.selenium.po.TopNav;
 
 public class page {
 
@@ -48,11 +49,12 @@ public class page {
 	public static WebDriverWait wait;
 	public static Properties CONFG = null;
 	public static Properties OR = null;
-	public static ReadExcel testExcel = new ReadExcel(System.getProperty("user.dir")+"\\src\\com\\ideal\\selenium\\util\\TestCase.xlsx");
+	public static ReadExcel testExcel = new ReadExcel(System.getProperty("user.dir")+"\\src\\com\\ideal\\selenium\\util\\IDEAL_TESTDATA.xlsx");
 	public static Alert alert;
 	public static String pageTitle ="";
 	public static Logger PAGE_LOGS = Logger.getLogger("cpLogger");
 	public static boolean LoggedIn = false;
+	public static TopNav topMenu = null;
 
 	public page(){
 
@@ -96,7 +98,7 @@ public class page {
 
 			//changed to 30 seconds as Marketplace page is taking more time to load.
 			wait = new WebDriverWait(driver,50);
-			//topMenu = new TopNav();
+			topMenu = new TopNav();
 			//driver.manage().window().maximize();
 			//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		}
@@ -1341,5 +1343,8 @@ public class page {
 
 	}
 	  
-
+		 public void  switchToframeByID(String Frame){
+			page.driver.switchTo().frame(driver.findElement(By.id( Frame)));
+		  
+		 }
 }
