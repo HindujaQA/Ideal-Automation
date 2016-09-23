@@ -18,7 +18,7 @@ import com.ideal.selenium.po.DashBoardPage;
 import com.ideal.selenium.po.HomePage;
 import com.ideal.selenium.po.elements.ElemProp;
 
-public classTestResource_Request_Form extends page{
+public class Resource_Request_Form extends page{
 	private HomePage home = null;
 	private DashBoardPage dbPage = null;
 	
@@ -38,6 +38,7 @@ public classTestResource_Request_Form extends page{
 			
 			}else{
 				System.out.println("In 500 error else loop");
+			
 				
 				Assert.assertTrue(home.FindByClassName(ElemProp.MY_PROFILE_HEADING).getText().trim().toUpperCase().contains(ElemProp.IdealTitle), "Not in Ideal Home Page");				
 			}
@@ -47,7 +48,7 @@ public classTestResource_Request_Form extends page{
 	} 
 
 	@Test (description = "RRF Creation")
-	public void CreateRRF(){
+	public void CreateRRF1(){
 		DashBoardPage dbPage = new DashBoardPage();
 		System.out.println("In RRF Creation");
 		page.wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(ElemProp.MY_PROFILE_HEADING)));

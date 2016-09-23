@@ -33,18 +33,17 @@ public class TopNav {
 		page.driver.navigate().to(currentUrl);		
 		return new EmployeeExitPageUser();
 	}
+	
 	public ResourceRequestFormPage goToRRFByUrl(){
-
 		String currentUrl = page.driver.getCurrentUrl();
-		if(currentUrl.trim().toUpperCase().contains("IDEAL"))
-			currentUrl = currentUrl.replaceAll("(http://)(.*)(iDeal)(.*)", "$1$2$3")+HeaderElem.SEO_RRF;
+		if(currentUrl.trim().toUpperCase().contains("/IDEAL/"))
+			currentUrl = currentUrl.replaceAll("(http://10.18.1.54)(/iDeal/)", "$1$2")+"request_management/rrf_requestor/";
 		else
-		currentUrl = currentUrl.replaceAll("(https*://)(\\w+-*\\w+)(.*)", "$1$2")+HeaderElem.SEO_RRF;
-		page.driver.navigate().to(currentUrl);
+			currentUrl = currentUrl.replaceAll("(http://10.18.1.54/)(\\w+-*\\w+)(.*)", "$1$2")+"request_management/rrf_requestor/";
+		page.driver.navigate().to(currentUrl);		
 		return new ResourceRequestFormPage();
-
-
 	}
+	
 
 
 }

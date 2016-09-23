@@ -14,11 +14,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-
-
-
-
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -36,11 +31,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
-import testlink.api.java.client.TestLinkAPIClient;
-import testlink.api.java.client.TestLinkAPIException;
 
 
-import com.ideal.selenium.util.ReadExcel
+
+import com.ideal.selenium.util.ReadExcel;
 import com.ideal.selenium.po.TopNav;
 
 public class page {
@@ -1273,11 +1267,6 @@ public class page {
 			return dateConv;
 		}
 		
-		
-		public String getStrippedPatNum(String patNum){
-			String strippedPatNum = patNum.replaceAll("(\\AUS)(.*)", "$2").replaceAll("(\\D*)(\\d{5,7}+)(\\D+.*)", "$1$2");
-			return strippedPatNum;
-		}
 		
 		public String getCaseKeyInLitUrl(String urlLit){
 			String caseKey=urlLit.replaceAll("(https*://)(\\w+-*\\w+)(.*/lit\\w*/)(\\w+-\\d+)(.*)", "$4");

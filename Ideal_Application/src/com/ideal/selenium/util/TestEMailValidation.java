@@ -2,7 +2,6 @@ package com.ideal.selenium.util;
 
 import java.util.Date;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.testng.annotations.Test;
 
 import com.ideal.selenium.po.EMAIL;

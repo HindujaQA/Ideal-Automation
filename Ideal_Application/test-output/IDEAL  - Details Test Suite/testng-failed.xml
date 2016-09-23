@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [IDEAL  - Details Test Suite]">
+  <listeners>
+    <listener class-name="com.ideal.selenium.util.TestScriptListener"/>
+  </listeners>
+  <test name="SetUp Scripts">
+    <classes>
+      <class name="com.ideal.selenium.pages.tests.initializeStop"/>
+    </classes>
+  </test> <!-- SetUp Scripts -->
+  <test name="TestLogin">
+    <classes>
+      <class name="com.ideal.selenium.pages.tests.TestLogin">
+        <methods>
+          <include name="checkLogin"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.TestLogin -->
+    </classes>
+  </test> <!-- TestLogin -->
+  <test name="TestResource_Request_Form ">
+    <classes>
+      <class name="com.ideal.selenium.pages.tests.TestResource_Request_Form">
+        <methods>
+          <include name="CreateRRF"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.TestResource_Request_Form -->
+    </classes>
+  </test> <!-- TestResource_Request_Form  -->
+  <test name="TestLogin(failed)">
+    <classes>
+      <class name="com.ideal.selenium.pages.tests.initializeStop">
+        <methods>
+          <include name="stop"/>
+          <include name="initBrowser"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.initializeStop -->
+      <class name="com.ideal.selenium.pages.tests.TestResource_Request_Form">
+        <methods>
+          <include name="initDBPageBeforeTest"/>
+          <include name="beforeMethodRRFPage"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.TestResource_Request_Form -->
+      <class name="com.ideal.selenium.pages.tests.TestLogin">
+        <methods>
+          <include name="checkLogin"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.TestLogin -->
+    </classes>
+  </test> <!-- TestLogin(failed) -->
+  <test name="TestResource_Request_Form (failed)">
+    <classes>
+      <class name="com.ideal.selenium.pages.tests.initializeStop">
+        <methods>
+          <include name="stop"/>
+          <include name="initBrowser"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.initializeStop -->
+      <class name="com.ideal.selenium.pages.tests.TestResource_Request_Form">
+        <methods>
+          <include name="CreateRRF"/>
+          <include name="initDBPageBeforeTest"/>
+          <include name="beforeMethodRRFPage"/>
+        </methods>
+      </class> <!-- com.ideal.selenium.pages.tests.TestResource_Request_Form -->
+    </classes>
+  </test> <!-- TestResource_Request_Form (failed) -->
+</suite> <!-- Failed suite [IDEAL  - Details Test Suite] -->

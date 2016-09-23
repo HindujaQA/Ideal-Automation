@@ -6,8 +6,8 @@ import org.testng.annotations.BeforeSuite;
 
 
 
-import com.rpxcorp.cp.selenium.basePage.page;
-import com.rpxcorp.cp.selenium.util.TestLinkResults;
+import com.ideal.selenium.basePage.page;
+//import com.ideal.selenium.util.TestLinkResults;
 
 
 
@@ -21,7 +21,7 @@ public class initializeStop {
 		//homePage = new HomePage();
 		//return homePage;
 		emptyPage = new page();
-		TestLinkResults.createXmlResults();
+		//TestLinkResults.createXmlResults();
 		return emptyPage;
 	}
 	

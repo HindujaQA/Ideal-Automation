@@ -6,8 +6,8 @@ import java.util.Properties;
 
 import com.ideal.selenium.basePage.page;
 
-import testlink.api.java.client.TestLinkAPIClient;
-import testlink.api.java.client.TestLinkAPIException;
+//import testlink.api.java.client.TestLinkAPIClient;
+//import testlink.api.java.client.TestLinkAPIException;
 
 public class TestUtil {
 	
@@ -58,7 +58,7 @@ public class TestUtil {
 
 	
 	//Test Results update in TestLink
-	public static void updateTestLinkResult(String testCase, String exception, String result) {
+/*	public static void updateTestLinkResult(String testCase, String exception, String result) {
 		TestLinkAPIClient testlinkAPIClient = new TestLinkAPIClient(page.CONFG.getProperty("DEV_KEY"), page.CONFG.getProperty("SERVER_URL"));
 		try {
 			testlinkAPIClient.reportTestCaseResult(page.CONFG.getProperty("PROJECT_NAME"), page.CONFG.getProperty("PLAN_NAME"), testCase, page.CONFG.getProperty("BUILD_NAME"), exception, result);
@@ -69,7 +69,7 @@ public class TestUtil {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 	
 	
 public static Object[][] getData(String testFuncName, String sheetName, ReadExcel testDataExcel){

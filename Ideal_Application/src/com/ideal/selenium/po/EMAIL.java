@@ -7,8 +7,6 @@ import java.util.*;
 
 import javax.mail.*;
 
-import org.apache.commons.lang3.time.DateUtils;
-
 public class EMAIL  {
 	static String Gmailid ="publicportal3@gmail.com";
 	static String password="Defiance123";

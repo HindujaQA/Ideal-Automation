@@ -25,9 +25,9 @@ import com.ideal.selenium.po.elements.ResourceRequestFormElem;
 
 
 public class TestResource_Request_Form extends page{
-	private HomePage home = null;
-	private DashBoardPage dbPage = null;
-	private ResourceRequestFormPage RRFPage = null;
+	private HomePage home ;
+	private DashBoardPage dbPage ;
+	private ResourceRequestFormPage RRFPage ;
 	
 	
 	@BeforeTest (alwaysRun=true) 
@@ -45,6 +45,7 @@ public class TestResource_Request_Form extends page{
 				Assert.assertFalse(home.FindByClassName(ElemProp.MY_PROFILE_HEADING).getText().trim().toUpperCase().contains(ElemProp.IdealTitle), "Not in Ideal Home Page");				
 			
 			}else{
+				page.wait.until(ExpectedConditions.presenceOfElementLocated(By.className(ElemProp.MY_PROFILE_HEADING)));
 				Assert.assertTrue(home.FindByClassName(ElemProp.MY_PROFILE_HEADING).getText().trim().toUpperCase().contains(ElemProp.IdealTitle.trim().toUpperCase()) , "Not in Ideal Home Page");				
 			}
 				}

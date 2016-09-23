@@ -215,23 +215,7 @@ public class DashBoardPage extends page {
 	}
 
 
-	public AcquisitionDetailsPage goToAcquisitionDetailsPage(String acqId){
-		String currentUrl = page.driver.getCurrentUrl();	
-		String acqPageUrl;
-		if(currentUrl.trim().toUpperCase().contains(".RPXCORP.COM"))
-		{
-			currentUrl = currentUrl.replaceAll("(https://)(.*)(.rpxcorp.com)(.*)", "$1$2$3");
-			acqPageUrl = currentUrl+"/acquisitions/"+acqId;			
-		}
-		else
-		{
-			currentUrl = currentUrl.replaceAll("(https*://)(\\w+-*\\w+)(.*)", "$1$2");
-			acqPageUrl = currentUrl+"/acquisitions/"+acqId;			
-		}
-		driver.get(acqPageUrl);
-		return new AcquisitionDetailsPage();
-	}
-
+	
 
 	public int getTotalRowsInTable(String cssPropTable){
 		List<WebElement> listTotalRows = driver.findElements(By.cssSelector(cssPropTable+">tbody>tr"));

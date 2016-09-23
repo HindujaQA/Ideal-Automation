@@ -1,4 +1,4 @@
-package com.rpxcorp.cp.selenium.po.elements;
+package com.ideal.selenium.po.elements;
 
 public final class AcqDetailsElem {
 	
